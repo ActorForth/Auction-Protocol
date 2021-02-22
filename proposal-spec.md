@@ -43,6 +43,9 @@ Each of these specific transactions will be examined in greater detail in the fo
 An Auction exists as a Non-Fungible Token (NFT) set on the Bitcoin Cash blockchain.
 Metadata about the Auction is provided in the GENESIS Transaction of the Auction NFT Group, in both the standard SLP OP_RETURN output as well as in two additional OP_RETURN outputs.
 This metadata can be seen in the Inputs of Figure 2.
+All fields are standard SLP except for the "Total Winners" and "Denomination" fields, which are specific to the Auction protocol.
+*Total Winners* defines how many Auction items in total can be claimed by Auction participants.
+*Denomination* defines a transaction ID of the specific SLP token that the Auction is accepting. Only 1 denomination may be specified in an Auction, and Bidders will lose access to any tokens they choose to send to a Bid that are __not__ the specified denomination. The denomination may also be simply set to '0' which indicates that Bitcoin Cash (BCH) should be used as the denomination for this specific Auction.
 
 !["Figure 2"](images/NFT_Group_GENESIS.png "Figure 2")
 
@@ -61,14 +64,16 @@ For example, if the input amount of Group Fungible in vin[0] is 30, then vout[1]
 In the Example Transaction visualized in Figure 3, the previous (GENESIS) transaction’s initially minted quantity of 2 GroupFungible is consumed in this transaction's vin[0], fanned-out in vout[1] and vout[2], outputting exactly 1 GroupFungible each, and no change is returned because the input contained an amount of exactly 2.
 If the input were greater, the change would be returned in vout[3].
 
-<!-- TODO: [Diagram and explaination for ‘MINTING’ to be added as well] -->
+![Figure 4](images/NFT_Group_MINT.png "Figure 4")
+
+Figure 4 visualizes the Minting of additional Group Fungible quantity to be used in fan-out transactions. A Minting Baton must be consumed (coming from the output of either the GENESIS of the Group, or a previous MINT transaction) in vin[0]. A Mint quantity is specified in the standard SLP OP_RETURN, and that Mint quantity is then locked to the Auction Owner in vout[1]. The Minting Baton is then also passed on via vout[2] to allow for future Minting. In the Example Transaction, a quantity of 1 was minted and locked to the Auction Owner's address.
 
 ## Requesting a Unique Bid Address
 
-An endpoint must be provided by the Auction Owner to Auction Bidders so that they are able to request Unique Bids (and the respective Unique Bid SLP Address) to which they will send Funding.
+An endpoint must be provided by the Auction Owner to potential Bidders so that they are able to request Unique Bids (and the respective Unique Bid SLP Address) to which they will send Funding.
 This endpoint must have the ability to, when a request is made by a Bidder, create a NFT Child from the Auction NFT Group, lock the NFT Child to a unique SLP Address, and return the NFT Child Token ID to the requesting Bidder.
 
-![Figure 4](images/NFT_Child_GENESIS.png "Figure 4")
+![Figure 5](images/NFT_Child_GENESIS.png "Figure 5")
 
 Figure 5 visualizes a transaction in which a Bid NFT (i.e. NFT Child) consuming a previously fanned-out UTXO of the NFT Group, and then locking (vout[1]) the Bid NFT to a Unique SLP Address.
 The Auction System protocol mandates that all optional fields in the SLP OP_RETURN *__must__* be left blank.

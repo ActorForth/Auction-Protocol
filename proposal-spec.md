@@ -12,10 +12,6 @@ It is assumed that the reader has preexisting knowledge of the Bitcoin Cash netw
 - [Funding a Bid](#funding-a-bid)
 - [Completion of an Auction](#completion-of-an-auction)
 - [Limitations](#limitations)
-- [OP_RETURNs](#op_returns)
-- [Fan-out transaction / OP_RETURN Size Limit (220 bytes)](#fan-out-transaction--op_return-size-limit-220-bytes)
-- [Bitcoin Cash Node 50 Dependent Limit](#bitcoin-cash-node-50-dependent-limit)
-
 <!-- ## Definitions
 
 [More details to be added later] -->

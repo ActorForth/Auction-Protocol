@@ -5,7 +5,6 @@ It is assumed that the reader has preexisting knowledge of the Bitcoin Cash netw
 
 ## Table of Contents
 
-- [Our Goal](#our-goal)
 - [High Level Overview](#high-level-overview)
 - [Creating an Auction](#creating-an-auction)
 - [Requesting a Unique Bid Address](#requesting-a-unique-bid-address)
@@ -15,10 +14,6 @@ It is assumed that the reader has preexisting knowledge of the Bitcoin Cash netw
 <!-- ## Definitions
 
 [More details to be added later] -->
-
-## Our Goal
-
-[...]
 
 ## High Level Overview
 

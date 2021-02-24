@@ -23,20 +23,23 @@ It is assumed that the reader has preexisting knowledge of the Bitcoin Cash netw
 
 ## High Level Overview
 
-An Auction Owner creates and begins an Auction.
+An Auction Owner creates and begins an Auction. This particular kind of auction is intended for the sale of multiple items that are effectively fungible commodities or distinguishable by only one attribute such as general admission tickets for an event or specific seats for an event. Therefore each object sold will be represented as an SLP Non-fungible Token (NFT). Before the token becomes eligible to represent such an object, it must first start as a Bid NFT and be one of the winning Bid NFTs. A Bidder may have multiple Bid NFTs. The Bidder funds his bid through the commitment of additional Fungible-Tokens or BCH depending on how the Auction is denominated upon creation. The Bidder may increase the amount of any existing Bid NFT but may not reduce an existing bid.
+
 Throughout the duration of the Auction, Bidders send Funding to any number of Bids via a Bid’s Unique Simple Ledger Protocol (SLP) Address.
 A unique Bid is represented by a Simple Ledger Protocol Non-Fungible Token (SLP NFT), which remains locked to a Unique SLP Address throughout the duration of the Auction.
+
 The Funding that Bidders send may be made in the denomination determined by the Auction Owner during setup, such as BCH or a specified SLP token.
+
 The current value of a Bid is the sum of all Funding sent to that Bid’s Unique SLP Address at that point in time.
 Once an Auction is ready to be concluded, the Auction Owner must finalize the Auction results by (1) sending the Bid NFT to the owners of the respective winning Bids, and (2) returning the Funding to the owners of the losing Bids.
 
 ![Figure 1](/images/Auction_Overview.png "Figure 1")
 
 An example showcasing the general relationships between entities of a running Auction is depicted in Figure 1.
-In the Green highlighted area of Figure 1, the Auction Owner creates the NFT Group for a new Auction (txid: 111), and fans-out 2 fungible Group UTXOs (txid: 112). A Minting transaction (txid: 113) is performed, and an additional fan-out transaction (txid: 114) provides additional UTXOs to later be consumed.
+In the Green highlighted area of Figure 1, the Auction Owner creates the NFT Group for a new Auction (txid: 111), and initially fans-out 2 fungible Group UTXOs (txid: 112). Later, a Minting transaction (txid: 113) is performed, and an additional fan-out transaction (txid: 114) provides additional UTXOs to later be consumed. A fungible Group UTXO must be created for every bid that will be associated with the Auction.
 
 In the Blue highlighted area of Figure 1, in response to requests from Bidders, new transactions (txid: 121, txid: 122, txid: 123) are created that consume the previously fanned-out Group UXTOs from the fan-out transactions (txid: 112, txid: 114) and result in new Bid NFTs with the appropriate metadata provided by the respective Bidders.
-The metadata consists of an SLP Address, which is used to determine where to return the Bidder's Funding (in the case of losing) or where to send their Bid NFT (in the case of winning).
+The metadata consists of an SLP Address, which is used to determine where to refund the Bidder's Funding (in the case of losing) or where to send their Bid NFT (in the case of winning).
 
 After a Bid NFT is created it is then locked to a Unique SLP Address, as visualized in the Yellow highlighted area.
 There is a one-to-one relationship, in that one Bid NFT should have exactly one Unique SLP Address, and vice versa.

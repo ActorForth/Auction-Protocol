@@ -11,13 +11,16 @@ It is assumed that the reader has preexisting knowledge of the Bitcoin Cash netw
 - [Funding a Bid](#funding-a-bid)
 - [Completion of an Auction](#completion-of-an-auction)
 - [Limitations](#limitations)
-<!-- ## Definitions
-
-[More details to be added later] -->
 
 ## High Level Overview
 
-An Auction Owner creates and begins an Auction. This particular kind of auction is intended for the sale of multiple items that are effectively fungible commodities or distinguishable by only one attribute such as general admission tickets for an event or specific seats for an event. Therefore each object sold will be represented as an SLP Non-fungible Token (NFT). Before the token becomes eligible to represent such an object, it must first start as a Bid NFT and be one of the winning Bid NFTs. A Bidder may have multiple Bid NFTs. The Bidder funds his bid through the commitment of additional Fungible-Tokens or BCH depending on how the Auction is denominated upon creation. The Bidder may increase the amount of any existing Bid NFT but may not reduce an existing bid.
+An Auction Owner creates and begins an Auction.
+This particular kind of Auction is intended for the sale of multiple items that are effectively fungible commodities or distinguishable by only one attribute, such as general admission tickets for an event or specific seats for an event.
+Therefore each object sold will be represented as an SLP Non-Fungible Token (NFT).
+Before the token becomes eligible to represent such an object, it must first start as a Bid NFT and be one of the winning Bid NFTs.
+A Bidder may have multiple Bid NFTs.
+The Bidder funds their Bid through the commitment of additional Fungible-Tokens or BCH depending on how the Auction is denominated upon creation.
+The Bidder may increase the amount of any existing Bid NFT but may not reduce an existing Bid.
 
 Throughout the duration of the Auction, Bidders send Funding to any number of Bids via a Bid’s Unique Simple Ledger Protocol (SLP) Address.
 A unique Bid is represented by a Simple Ledger Protocol Non-Fungible Token (SLP NFT), which remains locked to a Unique SLP Address throughout the duration of the Auction.

@@ -92,9 +92,9 @@ Funding, in the denomination specified by the Auction, is sent to a Bid by a Bid
 A Bidder is able to do this independently of the Auction Owner's endpoint once they receive their Bid Unique SLP Address from said endpoint.
 Sending Funding is simply represented by consuming the UTXOs of a specified SLP denomination from the Bidder’s wallet, and locking them to the Bid Unique SLP Address in a standard Pay-To-Public-Key-Hash (P2PKH) transaction.
 
-![Figure 5](images/TokenType1_SEND.png "Figure 5")
+![Figure 6](images/TokenType1_SEND.png "Figure 6")
 
-Figure 5 shows a Funding transaction. A Bidder simply sends any quantity of the specifically denominated token (i.e. 'DTKN') for the Auction to the Unique SLP Address they were provided. The value of this Bid is the sum of all the denominated Tokens currently locked to this Bid’s Unique SLP Address. 
+Figure 6 shows a Funding transaction. A Bidder simply sends any quantity of the specifically denominated token (i.e. 'DTKN') for the Auction to the Unique SLP Address they were provided. The value of this Bid is the sum of all the denominated Tokens currently locked to this Bid’s Unique SLP Address. 
 
 In the specific example (txid: 211) of Figure 5, the Bidder sends 10 DTKN to their Unique SLP Address "slp:qr111". Their original DTKN UTXO was 100, and so the remaining 90 DTKN was returned to them as leftover.
 

@@ -1,5 +1,7 @@
 # Proposal Specification for Address-based Bitcoin Cash Auction System
 
+Author: Nicolai Skye
+
 This document intends to provide a detailed specification that will allow anyone with knowledge of it to reconstruct the entirety of an Auction from a provided Auction ID, or to create and run a new Auction of their own.
 It is assumed that the reader has preexisting knowledge of the Bitcoin Cash network and is familiar with the concepts of Addresses, Transactions, and with Simple Ledger Protocol tokens.
 

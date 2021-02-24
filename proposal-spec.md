@@ -5,14 +5,13 @@ It is assumed that the reader has preexisting knowledge of the Bitcoin Cash netw
 
 ## Table of Contents
 
-- Our Goal
-- High Level Overview
-- Creating an Auction
-- Requesting a Bid Unique SLP Address
-- Funding a Bid
-- Completion of an Auction
-- User Interface Considerations
-
+- [Our Goal](#our-goal)
+- [High Level Overview](#high-level-overview)
+- [Creating an Auction](#creating-an-auction)
+- [Requesting a Unique Bid Address](#requesting-a-unique-bid-address)
+- [Funding a Bid](#funding-a-bid)
+- [Completion of an Auction](#completion-of-an-auction)
+- [Limitations](#limitations)
 <!-- ## Definitions
 
 [More details to be added later] -->

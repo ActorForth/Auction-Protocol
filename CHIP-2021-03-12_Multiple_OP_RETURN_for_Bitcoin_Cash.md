@@ -45,11 +45,17 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 ### Design & Implementation Process Timeline
 
 2020-09-21 [Initial comment on bitcoincashresearch.org](https://bitcoincashresearch.org/t/2021-bch-upgrade-items-brainstorm/130/23).
+
 2020-10-14 [Trial implementation of proposal on Bitcoin Unlimited node](https://github.com/ActorForth/BitcoinUnlimited/commit/fd10cbd9872b157d906a03d3a4ccf7c0ddd42c65). (note: this doesn't implement aggregate size limit)
+
 2020-10-?? Trial modifications to a [test fork of the Javascript bch-js API](https://github.com/ActorForth/bch-js) and the python Bitcash API libraries (currently in a private repo) completed.
+
 2021-02-24 [Proposal to be introduced for the May 2021 fork](https://bitcoincashresearch.org/t/multiple-op-returns-this-time-for-real/315).
+
 2021-03-21 This CHIP created.
+
 2021-03-24 Proposed completion for PRs to public Bitcoin Unlimited, Bitcoin Cash Node, bch-js API, and Bitcash API projects to support this CHIP. Basically T+9 days after proposal is approved.
+
 2021-05-?? Deployment to BCH Mainnet Chain
 
 ## Evaluation of Alternatives

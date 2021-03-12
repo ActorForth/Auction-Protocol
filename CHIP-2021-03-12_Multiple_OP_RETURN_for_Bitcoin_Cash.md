@@ -80,7 +80,9 @@ Alternatives to this proposal amount to restating original alternatives to OP_RE
 ## Discussions
 
 [CHIP Discussion at Bitcoincashresearch.org](https://bitcoincashresearch.org/t/multiple-op-returns-this-time-for-real/315)
+
 [Issues/PRs for this CHIP](https://github.com/ActorForth/Auction-Protocol/issues)
+
 Our team is available for chat on the [ActorForth gitter](https://gitter.im/ActorForth/community).
 
 ## Copyright

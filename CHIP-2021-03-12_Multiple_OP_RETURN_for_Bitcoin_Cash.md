@@ -2,8 +2,8 @@
 
         Title: Multiple OP_RETURNs for Bitcoin Cash
         First Submission Date: 2021-03-12
-        Authors: Benjamin Scherrey.
-                 Earlier concept - [Jonathan Silverblood](https://bitcoincashresearch.orgt/2021-bch-upgrade-items-brainstorm/130/23) .
+        Authors: Benjamin Scherrey
+                 Earlier concept - Jonathan Silverblood
         Type: Technical
         Status: DRAFT
         Last Edit Date: 2021-03-12

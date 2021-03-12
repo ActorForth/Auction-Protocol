@@ -2,11 +2,21 @@
 
         Title: Multiple OP_RETURNs for Bitcoin Cash
         First Submission Date: 2021-03-12
+        Owner: Benjamin Scherrey @proteusguy on Telegram
         Authors: Benjamin Scherrey
                  Earlier concept - Jonathan Silverblood
         Type: Technical
+        Is consensus change: No
         Status: DRAFT
         Last Edit Date: 2021-03-12
+
+## Discussions
+
+[CHIP Discussion at Bitcoincashresearch.org](https://bitcoincashresearch.org/t/multiple-op-returns-this-time-for-real/315)
+
+[Issues/PRs for this CHIP](https://github.com/ActorForth/Auction-Protocol/issues)
+
+Our team is available for chat on the [ActorForth gitter](https://gitter.im/ActorForth/community).
 
 ## Summary
 
@@ -77,13 +87,6 @@ Alternatives to this proposal amount to restating original alternatives to OP_RE
 
 ### Service Operators
 
-## Discussions
-
-[CHIP Discussion at Bitcoincashresearch.org](https://bitcoincashresearch.org/t/multiple-op-returns-this-time-for-real/315)
-
-[Issues/PRs for this CHIP](https://github.com/ActorForth/Auction-Protocol/issues)
-
-Our team is available for chat on the [ActorForth gitter](https://gitter.im/ActorForth/community).
 
 ## Copyright
 

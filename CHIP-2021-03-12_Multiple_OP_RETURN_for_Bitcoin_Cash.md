@@ -79,6 +79,9 @@ Alternatives to this proposal amount to restating original alternatives to OP_RE
 
 ### Full node developers
 
+from Jonathan Silverblood:
+  I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
+
 ### Major businesses
 
 ### Miners and pools

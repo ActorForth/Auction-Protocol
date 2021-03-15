@@ -8,7 +8,7 @@
         Type: Technical
         Is consensus change: No
         Status: DRAFT
-        Last Edit Date: 2021-03-12
+        Last Edit Date: 2021-03-13
 
 ## Discussions
 
@@ -32,7 +32,7 @@ This proposal aims to correct this minor oversight in order to bring the full po
 
 ## Specification
 
-The only technical elements we've identified are changes to the existing node systems to remove the limit of a single OP_RETURN and to enforce the existing size limit for OP_RETURN across all aggregate OP_RETURNs in the transaction outputs. 
+The only technical elements we've identified are changes to the existing node systems to remove the limit of a single OP_RETURN and to enforce the existing size limit for OP_RETURN based outputs across all aggregate OP_RETURN outputs in the transaction.
 
 ## Current Implementations
 

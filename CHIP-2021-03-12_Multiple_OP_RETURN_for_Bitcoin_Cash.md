@@ -66,6 +66,10 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 
 2021-03-24 Proposed completion for PRs to public Bitcoin Unlimited, Bitcoin Cash Node, bch-js API, and Bitcash API projects to support this CHIP. Basically T+9 days after proposal is approved.
 
+2021-03-13 [Flowee PR](https://gitlab.com/FloweeTheHub/thehub/-/commit/a9d3c2ee9279f2aa46890d74ce26f6e252623e72) support implemented by Tom Zander.
+
+2021-03-14 [BCHN PR](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115) support implemented by BigBlockIfTrue.
+
 2021-05-?? Deployment to BCH Mainnet Chain
 
 ## Evaluation of Alternatives

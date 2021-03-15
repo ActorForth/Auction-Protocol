@@ -85,11 +85,11 @@ Alternatives to this proposal amount to restating original alternatives to OP_RE
 
 from Jonathan Silverblood:
 
-  I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
+> I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
 
 from Tom Zander, owner [Flowee](https://flowee.org)
 
-  This change will have little to no cost on our ecosystem while enabling more usecases to be added over time, to be developed without touching consensus rules in the traditional permissionless manner. I fully support this proposal and have code ready to ship for this.
+> This change will have little to no cost on our ecosystem while enabling more usecases to be added over time, to be developed without touching consensus rules in the traditional permissionless manner. I fully support this proposal and have code ready to ship for this.
 
 ### Major businesses
 

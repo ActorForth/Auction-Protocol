@@ -5,6 +5,7 @@
         Owner: Benjamin Scherrey @proteusguy on Telegram
         Authors: Benjamin Scherrey
                  Earlier concept - Jonathan Silverblood
+                 Technical spec - BigBlockIfTrue
         Type: Technical
         Is consensus change: No
         Status: DRAFT
@@ -34,9 +35,24 @@ This proposal aims to correct this minor oversight in order to bring the full po
 
 The only technical elements we've identified are changes to the existing node systems to remove the limit of a single OP_RETURN and to enforce the existing size limit for OP_RETURN based outputs across all aggregate OP_RETURN outputs in the transaction.
 
+Formally, we set the rules as follows:
+
+* An OP_RETURN output is an output with a locking script consisting of the OP_RETURN opcode followed by zero or more data pushes.
+* A transaction is non-standard if the total byte size of the locking scripts of all OP_RETURN outputs is greater than 223.
+* While the [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) median time is less than 1621080000 (2021-05-15T12:00:00Z), a transaction is also non-standard if the number of OP_RETURN outputs is greater than one.
+
+Some remarks:
+
+* The size of the locking script is not just the raw data size, but includes the OP_RETURN opcode and the data push opcodes. In case of a single OP_RETURN output, only up to 220 bytes of data can be stored, because you need 1 byte for the OP_RETURN opcode, 1 byte for the OP_PUSHDATA1 opcode, and 1 byte for the length of the data. More bytes are lost if there is more than one data push operation, e.g. when the [4-byte prefix guideline](https://upgradespecs.bitcoincashnode.org/op_return-prefix-guideline/) is followed.
+* In case of a single OP_RETURN output, the rules are identical to the status quo.
+* In the extreme case, the rules imply a maximum of 223 OP_RETURN outputs, because the locking script of every OP_RETURN output is at least one byte (the OP_RETURN opcode itself).
+
 ## Current Implementations
 
-We have implemented these modifications in a local implementation of Bitcoin Unlimited's C++ source code and have successfully implemented a protocol that co-exists with SLP Non-fungible and Fungible tokens with little effort or complexity. See [Proposal Specification for Address-based Bitcoin Cash Auction System](https://github.com/ActorForth/Auction-Protocol/blob/main/proposal-spec.md) for details of this project.
+* [Full implementation of the rules in Bitcoin Cash Node, including activation logic](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115).
+* [Implementation of the rules in Flowee, without activation logic](https://gitlab.com/FloweeTheHub/thehub/-/blob/master/libs/server/policy/policy.cpp) (allows multiple outputs immediately instead of only after 2021-05-15T12:00:00Z).
+
+Both implementations introduce `"oversize-op-return"` as a new standardness error code, besides the existing `"multi-op-return"` error which becomes obsolete after multiple OP_RETURN outputs are allowed. In both implementations, the number 223 used in the rules can be overridden with the `-datacarriersize=<n>` command-line option.
 
 ## Implementation Costs and Risks
 

@@ -82,7 +82,7 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 
 2021-03-24 Proposed completion for PRs to public Bitcoin Unlimited, Bitcoin Cash Node, bch-js API, and Bitcash API projects to support this CHIP. Basically T+9 days after proposal is approved.
 
-2021-03-13 [Flowee PR](https://gitlab.com/FloweeTheHub/thehub/-/commit/a9d3c2ee9279f2aa46890d74ce26f6e252623e72) support implemented by Tom Zander.
+2021-03-13 [Flowee PR](https://gitlab.com/FloweeTheHub/thehub/-/commit/a9d3c2ee9279f2aa46890d74ce26f6e252623e72), [2](https://gitlab.com/FloweeTheHub/thehub/-/commit/45dd785f3916caa336a628d879dc7228fb73e520) support implemented by Tom Zander.
 
 2021-03-14 [BCHN PR](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115) support implemented by BigBlockIfTrue.
 
@@ -101,7 +101,11 @@ Alternatives to this proposal amount to restating original alternatives to OP_RE
 
 from Jonathan Silverblood:
 
-  I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
+> I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
+
+from Tom Zander, owner [Flowee](https://flowee.org)
+
+> This change will have little to no cost on our ecosystem while enabling more usecases to be added over time, to be developed without touching consensus rules in the traditional permissionless manner. I fully support this proposal and have code ready to ship for this.
 
 ### Major businesses
 

@@ -9,7 +9,7 @@
         Type: Technical
         Is consensus change: No
         Status: DRAFT
-        Last Edit Date: 2021-03-15
+        Last Edit Date: 2021-03-22
 
 ## Discussions
 
@@ -90,7 +90,15 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 
 ## Evaluation of Alternatives
 
-Alternatives to this proposal amount to restating original alternatives to OP_RETURN (such as the multi-sig data hack), introducing complex parsing requirements to OP_RETURN outputs, or dividing OP_RETURN dependent submissions across multiple transactions. All are vastly more complex and risky than this proposal. 
+Alternatives to this proposal amount to restating original alternatives to OP_RETURN (such as the multi-sig data hack), introducing complex parsing requirements to OP_RETURN outputs, or dividing OP_RETURN dependent submissions across multiple transactions. All are more complex and risky than this proposal. 
+
+Jonathan Silverblood identified 3 other alternative proposals considered in 2020, [BUIP149: Delimited OP_RETURNs](https://bitco.in/forum/threads/buip149-delimited-op_returns.26362/), [BUIP139](https://bitco.in/forum/threads/buip139-multiple-op_return-with-less-rules.24951/), and [BUIP140](https://bitco.in/forum/threads/buip140-multiple-op_return-with-shared-size-limit.24952/). 
+
+BUIP149 puts multiple OP_RETURNs in a single output and requires complex parsing scripts and potentially could collide with existing protocols using OP_RETURNs already including SLP. It also proposes to change the maximum size of OP_RETURN data in a transaction. Community efforts to incorporate this option are significantly higher than this CHIP.
+
+BUIP139 is actually quite similar to this CHIP except it proposes that there be some fixed limit to the number of OP_RETURNs. The major difference between this CHIP is just that it wasn't fully developed and we consider this CHIP to be an evolution of BUIP139.
+
+BUIP140 is similar to BUIP139 but rather than add more OP_RETURNs it provides to simply make it larger. This doesn't really address interoperability with existing protocols using OP_RETURN (such as SLP) and requires an increase in the size of a transaction and data held by OP_RETURNs. Community efforts to incorporate this option are significantly higher than this CHIP.
 
 ## List of Major Stakeholders
 
@@ -113,8 +121,23 @@ from Tom Zander, owner [Flowee](https://flowee.org)
 
 ### Application Developers
 
-### Service Operators
+from Joey Masterpig
 
+> I would like to add my support to this proposal as a Stakeholder. Founder of the upcoming SLP NFT game enter-the-sphere.com . Co-Founder of Spice Token, and a Director of the SLP Foundation.
+
+> I believe having multiple_opreturns will add some interesting possibilities for NFTs for Enter The Sphere, our token solution needs to be as competitive as possible, and anything that expands the chance of something innovative being done on SLP, is something I support.
+
+> As I understand, implementation of this change will allow multiple assets to be on a single tx, something that can be very useful for pairing NFTs with other assets. A function that allows us to link NFT items with other assets easier than current.
+
+> This is my personal opinion and support as a non-technical stakeholder, this is not a technical endorsement nor have i reviewed deeply about whether these changes have cons on a technical basis (as far as I understand there is none).
+
+
+from Benjaim Scherrey
+
+> My company, [Biggest Fan Productions](https://biggestfan.net), has developed a [protocol](https://github.com/ActorForth/Auction-Protocol/blob/main/proposal-spec.md) that utilizes SLP NFTs & FTs to perform on-chain tracked open call auctions for assets such as concert tickets. To fully be able to represent the state of the auction in a trustless manner it requires an additional OP_RETURN to be allowed in BCH transactions. This is notice of my support and personal interest in this CHIP.
+
+
+### Service Operators
 
 ## Copyright
 

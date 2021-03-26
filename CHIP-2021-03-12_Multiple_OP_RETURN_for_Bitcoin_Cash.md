@@ -5,6 +5,7 @@
         Owner: Benjamin Scherrey @proteusguy on Telegram
         Authors: Benjamin Scherrey
                  Earlier concept - Jonathan Silverblood
+                 Technical spec - BigBlockIfTrue
         Type: Technical
         Is consensus change: No
         Status: PROPOSED
@@ -34,9 +35,24 @@ This proposal aims to correct this minor oversight in order to bring the full po
 
 The only technical elements we've identified are changes to the existing node systems to remove the limit of a single OP_RETURN and to enforce the existing size limit for OP_RETURN based outputs across all aggregate OP_RETURN outputs in the transaction.
 
+Formally, we set the rules as follows:
+
+* An OP_RETURN output is an output with a locking script consisting of the OP_RETURN opcode followed by zero or more data pushes.
+* A transaction is non-standard if the total byte size of the locking scripts of all OP_RETURN outputs is greater than 223.
+* While the [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) median time is less than 1621080000 (2021-05-15T12:00:00Z), a transaction is also non-standard if the number of OP_RETURN outputs is greater than one.
+
+Some remarks:
+
+* The size of the locking script is not just the raw data size, but includes the OP_RETURN opcode and the data push opcodes. In case of a single OP_RETURN output, only up to 220 bytes of data can be stored, because you need 1 byte for the OP_RETURN opcode, 1 byte for the OP_PUSHDATA1 opcode, and 1 byte for the length of the data. More bytes are lost if there is more than one data push operation, e.g. when the [4-byte prefix guideline](https://upgradespecs.bitcoincashnode.org/op_return-prefix-guideline/) is followed.
+* In case of a single OP_RETURN output, the rules are identical to the status quo.
+* In the extreme case, the rules imply a maximum of 223 OP_RETURN outputs, because the locking script of every OP_RETURN output is at least one byte (the OP_RETURN opcode itself).
+
 ## Current Implementations
 
-We have implemented these modifications in a local implementation of Bitcoin Unlimited's C++ source code and have successfully implemented a protocol that co-exists with SLP Non-fungible and Fungible tokens with little effort or complexity. See [Proposal Specification for Address-based Bitcoin Cash Auction System](https://github.com/ActorForth/Auction-Protocol/blob/main/proposal-spec.md) for details of this project.
+* [Full implementation of the rules in Bitcoin Cash Node, including activation logic](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115).
+* [Implementation of the rules in Flowee, without activation logic](https://gitlab.com/FloweeTheHub/thehub/-/blob/master/libs/server/policy/policy.cpp) (allows multiple outputs immediately instead of only after 2021-05-15T12:00:00Z).
+
+Both implementations introduce `"oversize-op-return"` as a new standardness error code, besides the existing `"multi-op-return"` error which becomes obsolete after multiple OP_RETURN outputs are allowed. In both implementations, the number 223 used in the rules can be overridden with the `-datacarriersize=<n>` command-line option.
 
 ## Implementation Costs and Risks
 
@@ -66,7 +82,7 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 
 2021-03-24 Proposed completion for PRs to public Bitcoin Unlimited, Bitcoin Cash Node, bch-js API, and Bitcash API projects to support this CHIP. Basically T+9 days after proposal is approved.
 
-2021-03-13 [Flowee PR](https://gitlab.com/FloweeTheHub/thehub/-/commit/a9d3c2ee9279f2aa46890d74ce26f6e252623e72) support implemented by Tom Zander.
+2021-03-13 [Flowee PR](https://gitlab.com/FloweeTheHub/thehub/-/commit/a9d3c2ee9279f2aa46890d74ce26f6e252623e72), [2](https://gitlab.com/FloweeTheHub/thehub/-/commit/45dd785f3916caa336a628d879dc7228fb73e520) support implemented by Tom Zander.
 
 2021-03-14 [BCHN PR](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115) support implemented by BigBlockIfTrue.
 
@@ -76,7 +92,15 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 
 ## Evaluation of Alternatives
 
-Alternatives to this proposal amount to restating original alternatives to OP_RETURN (such as the multi-sig data hack), introducing complex parsing requirements to OP_RETURN outputs, or dividing OP_RETURN dependent submissions across multiple transactions. All are vastly more complex and risky than this proposal. 
+Alternatives to this proposal amount to restating original alternatives to OP_RETURN (such as the multi-sig data hack), introducing complex parsing requirements to OP_RETURN outputs, or dividing OP_RETURN dependent submissions across multiple transactions. All are more complex and risky than this proposal. 
+
+Jonathan Silverblood identified 3 other alternative proposals considered in 2020, [BUIP149: Delimited OP_RETURNs](https://bitco.in/forum/threads/buip149-delimited-op_returns.26362/), [BUIP139](https://bitco.in/forum/threads/buip139-multiple-op_return-with-less-rules.24951/), and [BUIP140](https://bitco.in/forum/threads/buip140-multiple-op_return-with-shared-size-limit.24952/). 
+
+BUIP149 puts multiple OP_RETURNs in a single output and requires complex parsing scripts and potentially could collide with existing protocols using OP_RETURNs already including SLP. It also proposes to change the maximum size of OP_RETURN data in a transaction. Community efforts to incorporate this option are significantly higher than this CHIP.
+
+BUIP139 is actually quite similar to this CHIP except it proposes that there be some fixed limit to the number of OP_RETURNs. The major difference between this CHIP is just that it wasn't fully developed and we consider this CHIP to be an evolution of BUIP139.
+
+BUIP140 is similar to BUIP139 but rather than add more OP_RETURNs it provides to simply make it larger. This doesn't really address interoperability with existing protocols using OP_RETURN (such as SLP) and requires an increase in the size of a transaction and data held by OP_RETURNs. Community efforts to incorporate this option are significantly higher than this CHIP.
 
 ## List of Major Stakeholders
 
@@ -87,7 +111,11 @@ Alternatives to this proposal amount to restating original alternatives to OP_RE
 
 from Jonathan Silverblood:
 
-  I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
+> I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
+
+from Tom Zander, owner [Flowee](https://flowee.org)
+
+> This change will have little to no cost on our ecosystem while enabling more usecases to be added over time, to be developed without touching consensus rules in the traditional permissionless manner. I fully support this proposal and have code ready to ship for this.
 
 ### Major businesses
 
@@ -95,8 +123,23 @@ from Jonathan Silverblood:
 
 ### Application Developers
 
-### Service Operators
+from Joey Masterpig
 
+> I would like to add my support to this proposal as a Stakeholder. Founder of the upcoming SLP NFT game enter-the-sphere.com . Co-Founder of Spice Token, and a Director of the SLP Foundation.
+
+> I believe having multiple_opreturns will add some interesting possibilities for NFTs for Enter The Sphere, our token solution needs to be as competitive as possible, and anything that expands the chance of something innovative being done on SLP, is something I support.
+
+> As I understand, implementation of this change will allow multiple assets to be on a single tx, something that can be very useful for pairing NFTs with other assets. A function that allows us to link NFT items with other assets easier than current.
+
+> This is my personal opinion and support as a non-technical stakeholder, this is not a technical endorsement nor have i reviewed deeply about whether these changes have cons on a technical basis (as far as I understand there is none).
+
+
+from Benjaim Scherrey
+
+> My company, [Biggest Fan Productions](https://biggestfan.net), has developed a [protocol](https://github.com/ActorForth/Auction-Protocol/blob/main/proposal-spec.md) that utilizes SLP NFTs & FTs to perform on-chain tracked open call auctions for assets such as concert tickets. To fully be able to represent the state of the auction in a trustless manner it requires an additional OP_RETURN to be allowed in BCH transactions. This is notice of my support and personal interest in this CHIP.
+
+
+### Service Operators
 
 ## Copyright
 

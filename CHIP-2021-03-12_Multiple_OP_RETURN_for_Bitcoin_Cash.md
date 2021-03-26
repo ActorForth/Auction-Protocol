@@ -113,17 +113,15 @@ Without the aggregate size consideration, the future impact of changing the lega
 
 ### Full node developers
 
-from Jonathan Silverblood:
-
-> I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
-
 from Tom Zander, owner [Flowee](https://flowee.org)
 
 > This change will have little to no cost on our ecosystem while enabling more usecases to be added over time, to be developed without touching consensus rules in the traditional permissionless manner. I fully support this proposal and have code ready to ship for this.
 
 ### Major businesses
 
-I have sought out contacts for such organizations and have received no responses. Appreciate any follow up on contacting these entities.
+from Benjaim Scherrey
+
+> My company, [Biggest Fan Productions](https://biggestfan.net), has developed a [protocol](https://github.com/ActorForth/Auction-Protocol/blob/main/proposal-spec.md) that utilizes SLP NFTs & FTs to perform on-chain tracked open call auctions for assets such as concert tickets. To fully be able to represent the state of the auction in a trustless manner it requires an additional OP_RETURN to be allowed in BCH transactions. This is notice of my support and personal interest in this CHIP.
 
 ### Miners and pools
 
@@ -131,9 +129,15 @@ I have sought out contacts for such organizations and have received no responses
 
 ### Wallets and clients
 
-I have sought out contacts for such organizations and have received no responses. Appreciate any follow up on contacting these entities.
+I have sought out contacts for such organizations and have received few responses. Appreciate any follow up on contacting these entities.
+
+An ElectronCash SLP wallet dev had no strong opinion on this CHIP (or the CHIP process) and registered no objection when asked.
 
 ### Application Developers
+
+from Jonathan Silverblood:
+
+> I believe multiple OP_RETURNs should be adopted, it is highly valuable as it makes it possible for OP_RETURN based protocols to work together to create value. I also believe that counting the aggregate number of bytes is in line with the intent of the original functionality.
 
 from Joey Masterpig
 
@@ -145,10 +149,11 @@ from Joey Masterpig
 
 > This is my personal opinion and support as a non-technical stakeholder, this is not a technical endorsement nor have i reviewed deeply about whether these changes have cons on a technical basis (as far as I understand there is none).
 
+Stoyan Zhekov, bch-js developer
 
-from Benjaim Scherrey
+> I think Multiple OP_RETURN CHIP will provide a way for better NFTs - both NFT (SLP) payload and BCP payload can be parts of one transaction, which will reduce the number of queries to retrieve the external content.
 
-> My company, [Biggest Fan Productions](https://biggestfan.net), has developed a [protocol](https://github.com/ActorForth/Auction-Protocol/blob/main/proposal-spec.md) that utilizes SLP NFTs & FTs to perform on-chain tracked open call auctions for assets such as concert tickets. To fully be able to represent the state of the auction in a trustless manner it requires an additional OP_RETURN to be allowed in BCH transactions. This is notice of my support and personal interest in this CHIP.
+
 
 
 ### Service Operators

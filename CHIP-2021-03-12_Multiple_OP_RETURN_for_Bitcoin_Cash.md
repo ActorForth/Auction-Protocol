@@ -51,9 +51,11 @@ Some remarks:
 
 * [Full implementation of the rules in Bitcoin Cash Node, including activation logic](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115).
 * [Implementation of the rules in Flowee, without activation logic](https://gitlab.com/FloweeTheHub/thehub/-/blob/master/libs/server/policy/policy.cpp) (allows multiple outputs immediately instead of only after 2021-05-15T12:00:00Z).
-* [Implementation of the rules in Bitcoin Unlimited, without activation logic](https://gitlab.com/bitcoinunlimited/BCHUnlimited/-/merge_requests/2453) 
 
 Both implementations introduce `"oversize-op-return"` as a new standardness error code, besides the existing `"multi-op-return"` error which becomes obsolete after multiple OP_RETURN outputs are allowed. In both implementations, the number 223 used in the rules can be overridden with the `-datacarriersize=<n>` command-line option.
+
+* [Implementation of the rules in Bitcoin Unlimited, without activation logic](https://gitlab.com/bitcoinunlimited/BCHUnlimited/-/merge_requests/2453).   
+
 
 ## Implementation Costs and Risks
 

@@ -100,9 +100,11 @@ BUIP149 puts multiple OP_RETURNs in a single output and requires complex parsing
 
 BUIP139 is actually quite similar to this CHIP except it proposes that there be some fixed limit to the number of OP_RETURNs. One reason why BUIP139 should be considered inferior is because it makes it more difficult to change the op_return max bytes in the future, as it would magnify the impact, for example:
 
-If BUIP139 took place, and was set to 4 op_returns / transaction, then if we want to change the bytesize it now has to be an even number of 4. If we naively increase by 10 bytes, then a total of 40 more bytes can be used, rather than the 10 byte intended.
+If BUIP139 took place, and was set to 4 op_returns / transaction, then if we want to change the byte size it now has to be an even number of 4. If we naively increase by 10 bytes, then a total of 40 more bytes can be used, rather than the 10 byte intended.
 
 BUIP140 is similar to this CHIP but was just not taken forward. Major difference is that it debates or introduces the explicit possibility of increasing the total size of OP_RETURN data but does not require it.
+
+Without the aggregate size consideration, the future impact of changing the legal sizes of OP_RETURN becomes more profound and possibly difficult to predict but saves tx creators from having to track a total across all OP_RETURNs. The opinion of the author is that the days of being able to consider parts of transactions independent of others are long gone so this is not a meaningful shortcoming. Size reductions would be profound and dangerous changes and are unlikely to be practical to deploy. Size increases should be based on empirical demonstrations of value through experimental apps that push these limits while demonstrating real value to the BCH ecosystem. Regardless of the ultimate size, having that quantity come from a shared pool helps allow OP_RETURN based protocols to be expressed naturally in a manner more closely resembling what their ultimate core protocol implementations would look like rather than having to perform hacks to fit within a per-OP_RETURN limit that would necessarily be smaller. Again these are future considerations outside of the direct scope of this CHIP.
 
 ## List of Major Stakeholders
 

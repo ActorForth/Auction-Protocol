@@ -98,9 +98,11 @@ Jonathan Silverblood identified 3 other alternative proposals considered in 2020
 
 BUIP149 puts multiple OP_RETURNs in a single output and requires complex parsing scripts and potentially could collide with existing protocols using OP_RETURNs already including SLP. It also proposes to change the maximum size of OP_RETURN data in a transaction. Community efforts to incorporate this option are significantly higher than this CHIP.
 
-BUIP139 is actually quite similar to this CHIP except it proposes that there be some fixed limit to the number of OP_RETURNs. The major difference between this CHIP is just that it wasn't fully developed and we consider this CHIP to be an evolution of BUIP139.
+BUIP139 is actually quite similar to this CHIP except it proposes that there be some fixed limit to the number of OP_RETURNs. One reason why BUIP139 should be considered inferior is because it makes it more difficult to change the op_return max bytes in the future, as it would magnify the impact, for example:
 
-BUIP140 is similar to BUIP139 but rather than add more OP_RETURNs it provides to simply make it larger. This doesn't really address interoperability with existing protocols using OP_RETURN (such as SLP) and requires an increase in the size of a transaction and data held by OP_RETURNs. Community efforts to incorporate this option are significantly higher than this CHIP.
+If BUIP139 took place, and was set to 4 op_returns / transaction, then if we want to change the bytesize it now has to be an even number of 4. If we naively increase by 10 bytes, then a total of 40 more bytes can be used, rather than the 10 byte intended.
+
+BUIP140 is similar to this CHIP but was just not taken forward. Major difference is that it debates or introduces the explicit possibility of increasing the total size of OP_RETURN data but does not require it.
 
 ## List of Major Stakeholders
 
@@ -119,7 +121,15 @@ from Tom Zander, owner [Flowee](https://flowee.org)
 
 ### Major businesses
 
+I have sought out contacts for such organizations and have received no responses. Appreciate any follow up on contacting these entities.
+
 ### Miners and pools
+
+I have sought out contacts for such organizations and have received no responses. Appreciate any follow up on contacting these entities.
+
+### Wallets and clients
+
+I have sought out contacts for such organizations and have received no responses. Appreciate any follow up on contacting these entities.
 
 ### Application Developers
 

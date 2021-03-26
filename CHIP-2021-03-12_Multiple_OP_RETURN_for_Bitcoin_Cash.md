@@ -7,8 +7,8 @@
                  Earlier concept - Jonathan Silverblood
         Type: Technical
         Is consensus change: No
-        Status: DRAFT
-        Last Edit Date: 2021-03-15
+        Status: PROPOSED
+        Last Edit Date: 2021-03-26
 
 ## Discussions
 
@@ -69,6 +69,8 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 2021-03-13 [Flowee PR](https://gitlab.com/FloweeTheHub/thehub/-/commit/a9d3c2ee9279f2aa46890d74ce26f6e252623e72) support implemented by Tom Zander.
 
 2021-03-14 [BCHN PR](https://gitlab.com/bitcoin-cash-node/bitcoin-cash-node/-/merge_requests/1115) support implemented by BigBlockIfTrue.
+
+2021-03-25 [Bitcoin Unlimited PR](https://gitlab.com/bitcoinunlimited/BCHUnlimited/-/merge_requests/2453) support implemented by Nicolai Skye.
 
 2021-05-?? Deployment to BCH Mainnet Chain
 

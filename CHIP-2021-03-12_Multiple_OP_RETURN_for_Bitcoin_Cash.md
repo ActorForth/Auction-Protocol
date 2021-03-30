@@ -120,6 +120,12 @@ from Tom Zander, owner [Flowee](https://flowee.org)
 
 > This change will have little to no cost on our ecosystem while enabling more usecases to be added over time, to be developed without touching consensus rules in the traditional permissionless manner. I fully support this proposal and have code ready to ship for this.
 
+from freetrader, lead maintainer of Bitcoin Cash Node
+
+> This is a simple and logical change that provides more flexibility for OP_RETURN users without affecting the trade-offs associated with the limit. The proposal has been implemented in a BCHN change request and a majority of BCHN maintainers supports activating this change on 15 May 2021.
+
+> While this CHIP arrived at a fairly late moment, we believe that sufficient awareness has been raised such that it can nevertheless be activated in May provided all major full node clients can implement it by then.
+
 ### Major businesses
 
 from Benjaim Scherrey
@@ -156,10 +162,6 @@ Stoyan Zhekov, bch-js developer
 
 > I think Multiple OP_RETURN CHIP will provide a way for better NFTs - both NFT (SLP) payload and BCP payload can be parts of one transaction, which will reduce the number of queries to retrieve the external content.
 
-
-
-
-### Service Operators
 
 ## Copyright
 

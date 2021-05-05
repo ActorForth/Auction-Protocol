@@ -31,6 +31,8 @@ The primary limitation of OP_RETURN is that the protocol standard only allows fo
 
 This proposal aims to correct this minor oversight in order to bring the full potential of OP_RETURN's experimental expressiveness to the BCH chain without incurring any additional trade-offs that were part of its original design. 
 
+The benefits of this proposal also reach users and businesses in drastically reducing foodprint when dealing with several OP_RETURN for their given use cases. Users will be able to use OP_RETURN space more efficiently, pack information in fewer transactions, use less space in mined blocks and save fees while mempool will see fewer congestions –for this specific cause.
+
 ## Specification
 
 The only technical elements we've identified are changes to the existing node systems to remove the limit of a single OP_RETURN and to enforce the existing size limit for OP_RETURN based outputs across all aggregate OP_RETURN outputs in the transaction.
@@ -162,6 +164,11 @@ Stoyan Zhekov, bch-js developer
 
 > I think Multiple OP_RETURN CHIP will provide a way for better NFTs - both NFT (SLP) payload and BCP payload can be parts of one transaction, which will reduce the number of queries to retrieve the external content.
 
+### Users
+
+from Leandro Di Marco
+
+> I see this initiative with great value for users, who will engage with the OP_RETURN resource more efficiently. And while such optimization would seem samll at the moment, it will surely become more relevant as Bitcoin Cash grows in adoption.
 
 ## Copyright
 

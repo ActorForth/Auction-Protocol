@@ -8,8 +8,8 @@
                  Technical spec - BigBlockIfTrue
         Type: Technical
         Is consensus change: No
-        Status: PROPOSED
-        Last Edit Date: 2021-03-26
+        Status: FINAL
+        Last Edit Date: 2021-05-17
 
 ## Discussions
 

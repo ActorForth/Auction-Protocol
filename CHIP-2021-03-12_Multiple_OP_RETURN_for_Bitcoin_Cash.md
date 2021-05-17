@@ -93,7 +93,7 @@ Now that the limit of a single OP_RETURN has been removed, future well behaved d
 
 2021-03-25 [Bitcoin Unlimited PR](https://gitlab.com/bitcoinunlimited/BCHUnlimited/-/merge_requests/2453) support implemented by Nicolai Skye.
 
-2021-05-?? Deployment to BCH Mainnet Chain
+2021-05-15 Deployment to BCH Mainnet Chain
 
 ## Evaluation of Alternatives
 
